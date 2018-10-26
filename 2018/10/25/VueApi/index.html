@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Vue后台接口管理方法 | SynalsBlog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在使用Vue+axios开发时我们可以将访问的接口统一到固定的api文件夹中，方便管理和修改 使用方法如下首先创建一个api文件夹,文件夹中包括index.js和其他不同类别api的js所有文件: 其中http.js为axios的配置文件： http.js:123456789101112131415import axios from &apos;axios&apos;axios.defaults.timeout =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue后台接口管理方法">
+<meta property="og:url" content="http://yoursite.com/2018/10/25/VueApi/index.html">
+<meta property="og:site_name" content="SynalsBlog">
+<meta property="og:description" content="在使用Vue+axios开发时我们可以将访问的接口统一到固定的api文件夹中，方便管理和修改 使用方法如下首先创建一个api文件夹,文件夹中包括index.js和其他不同类别api的js所有文件: 其中http.js为axios的配置文件： http.js:123456789101112131415import axios from &apos;axios&apos;axios.defaults.timeout =">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/10/25/VueApi/allFile.png">
+<meta property="og:updated_time" content="2018-10-26T03:03:47.223Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue后台接口管理方法">
+<meta name="twitter:description" content="在使用Vue+axios开发时我们可以将访问的接口统一到固定的api文件夹中，方便管理和修改 使用方法如下首先创建一个api文件夹,文件夹中包括index.js和其他不同类别api的js所有文件: 其中http.js为axios的配置文件： http.js:123456789101112131415import axios from &apos;axios&apos;axios.defaults.timeout =">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/25/VueApi/allFile.png">
+  
+    <link rel="alternate" href="/atom.xml" title="SynalsBlog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SynalsBlog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-VueApi" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/25/VueApi/" class="article-date">
+  <time datetime="2018-10-25T07:20:40.000Z" itemprop="datePublished">2018-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Vue后台接口管理方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在使用Vue+axios开发时我们可以将访问的接口统一到固定的api文件夹中，方便管理和修改</p>
+<h2 id="使用方法如下"><a href="#使用方法如下" class="headerlink" title="使用方法如下"></a>使用方法如下</h2><h3 id="首先创建一个api文件夹-文件夹中包括index-js和其他不同类别api的js"><a href="#首先创建一个api文件夹-文件夹中包括index-js和其他不同类别api的js" class="headerlink" title="首先创建一个api文件夹,文件夹中包括index.js和其他不同类别api的js"></a>首先创建一个api文件夹,文件夹中包括index.js和其他不同类别api的js</h3><p>所有文件:<img src="/2018/10/25/VueApi/allFile.png" alt="你想输入的替代文字"></p>
+<p>其中http.js为axios的配置文件：</p>
+<h4 id="http-js"><a href="#http-js" class="headerlink" title="http.js:"></a><code>http.js</code>:</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import axios from <span class="string">'axios'</span></span><br><span class="line"></span><br><span class="line">axios.defaults.timeout = <span class="number">30000</span>; </span><br><span class="line"></span><br><span class="line">axios.defaults.baseURL =process.env.API_ROOT</span><br><span class="line"></span><br><span class="line">axios.interceptors.request.use(</span><br><span class="line">config =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;,</span><br><span class="line">err =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> Promise.reject(err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">export default axios;</span><br></pre></td></tr></table></figure>
+<p>我们以user.js为例：</p>
+<h4 id="user-js"><a href="#user-js" class="headerlink" title="user.js:"></a><code>user.js</code>:</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import axios from <span class="string">'@/axios/http.js'</span> </span><br><span class="line">const user=&#123;</span><br><span class="line">    <span class="symbol">Login:</span>(data) =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> axios.post(<span class="string">'/login'</span>,&#123;</span><br><span class="line">            <span class="symbol">params:</span>data</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="symbol">SaveUser:</span>(username, password, type) =&gt; &#123;</span><br><span class="line">        const data = &#123;</span><br><span class="line">            username,</span><br><span class="line">            password,</span><br><span class="line">            type</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> axios.post(<span class="string">'/sys/users'</span>, data)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="symbol">FindUserById:</span> (id) =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> axios.get(<span class="string">`/sys/users/$&#123;id&#125;`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default user</span><br></pre></td></tr></table></figure>
+<p>创建一个对象，用对象的属性方法来返回axios接口,接下来我们将定义的方法添加的api/index.js中去：</p>
+<h4 id="index-js"><a href="#index-js" class="headerlink" title="index.js:"></a><code>index.js</code>:</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import user from <span class="string">'./user.js'</span></span><br><span class="line">import org from <span class="string">'./org.js'</span></span><br><span class="line">import project from <span class="string">'./project.js'</span></span><br><span class="line">const api=&#123;</span><br><span class="line">    user,</span><br><span class="line">    org,</span><br><span class="line">    project</span><br><span class="line">&#125;</span><br><span class="line">export default api</span><br></pre></td></tr></table></figure>
+<p>最后我们将index.js添加到main.js中去。定义成全局的方法就可以在vue中的每一个页面使用了</p>
+<h4 id="main-js"><a href="#main-js" class="headerlink" title="main.js:"></a><code>main.js</code>:</h4><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import api from <span class="string">'@/api/index.js'</span></span><br><span class="line">Vue.prototype.$api = api;</span><br></pre></td></tr></table></figure>
+<p>例如我们需要登录就可以这样使用:<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">methods:</span>&#123;</span><br><span class="line">    login()&#123;</span><br><span class="line">        this.$api.user.Login(this.saveForm).<span class="keyword">then</span>(res =&gt; &#123;</span><br><span class="line">              console.log(res)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就可以方便的管理所有的后台接口了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/25/VueApi/" data-id="cjnpcnshj0003xkrrv6x9xn8d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS数据循环生成树结构</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/25/VueApi/">Vue后台接口管理方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/25/hello-world/">JS数据循环生成树结构</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Synals Gong<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
